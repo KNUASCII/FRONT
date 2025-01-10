@@ -43,8 +43,8 @@ const LandingPage = () => {
       <Element name="section3" className="section section3">
         <div ref={section3Ref} className="content">
             <div className={`text ${isSection3Visible ? "fade-in-left" : ""}`}>
-              <h2 style={{ color: "blue" }}>AI 감정 일기</h2>
                   <p className="section3_phrase">
+                    <p style={{ color: "blue", size: "14px" }}>AI 감정일기</p>
                     오늘, 힘든 일이 있었니?<br />
                     느낀 생각들을 AI 감정 일기에 담아봐.<br />
                     금방 괜찮아질 거야라는 <strong>막연한 말 대신, </strong><br/>
@@ -61,11 +61,11 @@ const LandingPage = () => {
       <Element name="section4" className="section section4">
         <div ref={section4Ref} className="content">
           <div className={`text ${isSection4Visible ? "fade-in-left" : ""}`}>
-            <h2 style={{ color: "blue" }}>AI 감정 저널링</h2>
             <p className="section3_phrase">
-              "내 마음을 어제보다 조금 더 잘 아는 방법"<br />
-              매일 쌓인 내 감정을 그래프로 확인할 수 있어.<br />
-              쉽고 편리한 AI 감정 저널링으로 꺼내봐.
+              <p style={{ color: "blue", size: "14px" }}>AI 감정 저널링</p>
+                "내 마음을 어제보다 조금 더 잘 아는 방법"<br />
+                매일 쌓인 내 감정을 그래프로 확인할 수 있어.<br />
+                쉽고 편리한 AI 감정 저널링으로 꺼내봐.
             </p>
           </div>
           <div className={`img ${isSection4Visible ? "fade-in-right" : ""}`}>

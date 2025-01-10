@@ -124,8 +124,9 @@ body {
 }
 
 .section3_phrase{
-  font-size: 1vw;
-  line-height: 1.5; /* 텍스트 크기에 비례한 줄 간격 */
+  width: 500px;
+  font-size: 1.2vw;
+  line-height: 2.0; /* 텍스트 크기에 비례한 줄 간격 */
   margin-right: 10px;
   text-align : left;
   max-width: 500px; /* 텍스트 최대 너비 */
