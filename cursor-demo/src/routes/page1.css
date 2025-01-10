@@ -25,35 +25,75 @@ body {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
+  background-color: #d0e7f9;
 }
 
 
 .section1 {
-  background-color: var(--main-bg-color);
   background-image: url('../Images/Input_Background.png'); /* 배경 이미지 추가 */
-  background-size: cover; /* 배경 이미지 크기 조정 */
+  background-size: 1920px 1080px; /* 배경 이미지 크기 조정 */
   background-position: center; /* 배경 이미지 위치 */
   background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+  
 }
 
 .section2 {
-  background-color: #d0e7f9;
+  background-color: #ffffff;
 }
 
 .section3 {
-  background-color: #d0e7f9;
+  background-color: #ffffff;
+}
+
+.section3 .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.section3 .text {
+  flex: 1;
+  margin-right: 70px;
+  width: 430px;
+  text-align: left;
+}
+
+.section3 .img {
+  flex: 1;
+  text-align: center;
+  margin-left: 30px;
 }
 
 .section4 {
-  background-color: #d0e7f9;
+  background-color: #ffffff;
+}
+
+.section4 .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.section4 .text {
+  flex: 1;
+  margin-right: 0px;
+  width: 530px;
+  text-align: left;
+}
+
+.section4 .img {
+  flex: 1;
+  text-align: center;
 }
 
 .section5 {
-  background-color: #d0e7f9;
+  background-color: #ffffff;
 }
 
 .section6 {
-  background-color: #d0e7f9;
+  background-color: #ffffff;
 }
 
 /* 버튼 스타일 */
