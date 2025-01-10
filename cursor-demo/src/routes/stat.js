@@ -4,14 +4,26 @@ import './stats.css';
 import axios from 'axios'; // axios 라이브러리 import
 
 const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2 }) => {
-  const [stats, setStats] = useState({기쁨:0.1, 슬픔:0.1, 분노:0.1, 불안:0.1, 무기력:0.1}); // 초기 상태 0.1로 한 이유 오각형 모양 이상함
+  const [stats, setStats] = useState({
+    기쁨:0.1, 
+    슬픔:0.1, 
+    분노:0.1, 
+    불안:0.1, 
+    무기력:0.1}); // 초기 상태 0.1로 한 이유 오각형 모양 이상함
+  const statsKeys = ['기쁨', '슬픔', '분노', '불안', '무기력']; // stats 객체의 키를 직접 정의
 
   useEffect(() => {
     // 서버에서 데이터를 가져오는 함수
     const fetchData = async () => {
+      const token = localStorage.getItem('token');
       try {
-        const response = await axios.get('http://localhost:8080/api/emotion/userEmotion'); // 서버 URL을 입력하세요
-        setStats(response.data); // 받아온 데이터로 상태 업데이트
+        const response = await axios.get('http://localhost:8080/api/emotion/userEmotion', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }); // 서버 URL을 입력하세요
+        console.log(response.data);
+        setStats(response.data.emotionData); // 받아온 데이터로 상태 업데이트
       } catch (error) {
         console.error("서버에서 데이터를 가져오는데 실패했습니다.", error);
       }
@@ -26,7 +38,8 @@ const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2
   const centerY = size; // 중심 y 좌표
 
   // 감정 상태에 따른 정오각형 꼭짓점 좌표 계산
-  const points = Object.values(stats).map((stat, i) => {
+  const points = statsKeys.map((key, i) => {
+    const stat = stats[key]; // stats 객체의 키를 순회하면서 해당 키에 대응하는 값을 가져옴
     // 모든 감정 상태 값이 동일한 경우, 반지름을 10으로 설정
     const radius = (stat / maxStat) * (maxStat === 0.1 ? 5 : size); 
     const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2; // -90도부터 시작
@@ -45,7 +58,8 @@ const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2
   });
 
   // 감정 상태에 따른 텍스트 위치 계산
-  const textPoints = Object.values(stats).map((stat, i) => {
+  const textPoints = statsKeys.map((key, i) => {
+    const stat = stats[key]; // stats 객체의 키를 순회하면서 해당 키에 대응하는 값을 가져옴
     const radius = size - 15; // 텍스트를 오각형 꼭짓점에 위치하도록 설정
     const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2; // -90도부터 시작
     const x = centerX + radius * Math.cos(angle);
@@ -71,7 +85,7 @@ const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2
         />
         {textPoints.map((point, i) => (
           <text x={point.x} y={point.y} fill="black" textAnchor="middle" dominantBaseline="middle">
-            {Object.keys(stats)[i]}
+            {statsKeys[i]}
           </text>
         ))}
       </svg>
