@@ -13,7 +13,7 @@ function RegisterPage() {
     password: '',
     passwordCheck: '',
     userName: '',
-    birthDate: '',
+    birthday: '',
   });
 
   const openModal = () => setIsModalOpen(true);
@@ -33,6 +33,7 @@ function RegisterPage() {
       return;
     }
     try {
+    console.log(formData);
       const response = await axios.post('http://localhost:8080/api/auth/register', formData);
       alert('회원가입 성공!');
       closeModal();
@@ -82,7 +83,7 @@ function RegisterPage() {
               <label>이름</label>
               <input type="text" name="userName" value={formData.userName} placeholder="이름을 입력해주세요." onChange={handleChange} />
               <label>생년월일</label>
-              <input type="text" name="birthDate" value={formData.birthDate} placeholder="생년월일을 입력해주세요." onChange={handleChange} pattern="\d{6}" title="6자리 숫자로 입력해주세요." />
+              <input type="text" name="birthday" value={formData.birthday} placeholder="생년월일을 입력해주세요." onChange={handleChange} pattern="\d{6}" title="6자리 숫자로 입력해주세요." />
               <p>전화번호, 이메일 등은 알아서 만드삼</p>
               <button type="submit">확인</button>
             </form>
