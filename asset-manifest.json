@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/kangnamthon/static/css/main.3c09ed50.css",
+    "main.js": "/kangnamthon/static/js/main.16587b6e.js",
+    "static/js/488.adbfc335.chunk.js": "/kangnamthon/static/js/488.adbfc335.chunk.js",
+    "static/media/Input_Background.png": "/kangnamthon/static/media/Input_Background.03e2eeb087b9537e2e83.png",
+    "static/media/KNU_MaeumCenter.png": "/kangnamthon/static/media/KNU_MaeumCenter.6086ba9518e21b18d845.png",
+    "static/media/KNU_PlusCenter.png": "/kangnamthon/static/media/KNU_PlusCenter.21ac6dde7329403d60ff.png",
+    "static/media/login_icon.png": "/kangnamthon/static/media/login_icon.22fc19508d70076a7de6.png",
+    "index.html": "/kangnamthon/index.html",
+    "main.3c09ed50.css.map": "/kangnamthon/static/css/main.3c09ed50.css.map",
+    "main.16587b6e.js.map": "/kangnamthon/static/js/main.16587b6e.js.map",
+    "488.adbfc335.chunk.js.map": "/kangnamthon/static/js/488.adbfc335.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3c09ed50.css",
+    "static/js/main.16587b6e.js"
+  ]
+}
