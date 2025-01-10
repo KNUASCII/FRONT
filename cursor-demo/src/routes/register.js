@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './registerpage.css';
+import logo from '../Images/Main_logo.png';
+import emotionDiaryIcon from '../Images/emotionDiary_icon.png';
+import emotionJournalIcon from '../Images/emotionJournal_icon.png';
+import Newdiary from "./newdiary";
+import Stat from "./stat";
+
 
 function RegisterPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -9,7 +16,7 @@ function RegisterPage() {
     password: '',
     passwordCheck: '',
     userName: '',
-    birthDate: '',
+    birthday: '',
   });
 
   const openModal = () => setIsModalOpen(true);
@@ -29,6 +36,7 @@ function RegisterPage() {
       return;
     }
     try {
+    console.log(formData);
       const response = await axios.post('http://localhost:8080/api/auth/register', formData);
       alert('회원가입 성공!');
       closeModal();
@@ -38,10 +46,26 @@ function RegisterPage() {
     }
   };
 
+  const passwordMatch = formData.password === formData.passwordCheck;
+
   return (
     <div className="register-page">
       <div className="sidebar">
-        <button onClick={openModal}>회원가입</button>
+        <img src={logo} alt="MA:IN 로고" className="logo" />
+        <div className="menu">
+          <hr style={{border: '1.5px solid #000'}}/>
+          <button>로그인</button>
+          <button onClick={openModal}>회원가입</button>
+          <hr style={{border: '1.5px solid #000'}}/>
+          <Link to="/Newdiary" className="menu-item">
+            <img src={emotionDiaryIcon} alt="AI 감정 일기" />
+            AI 감정 일기
+          </Link>
+          <Link to="/Stat" className="menu-item">
+            <img src={emotionJournalIcon} alt="AI 감정 저널링" />
+            AI 감정 저널링
+          </Link>
+        </div>
       </div>
 
       {isModalOpen && (
@@ -53,16 +77,16 @@ function RegisterPage() {
               <label>아이디</label>
               <input type="text" name="userID" value={formData.userID} placeholder="아이디를 입력해주세요." onChange={handleChange} />
               <label>비밀번호</label>
-              <input type="password" name="password" value={formData.password} placeholder="비밀번호를 입력해주세요." onChange={handleChange} className="success" />
+              <input type="password" name="password" value={formData.password} placeholder="비밀번호를 입력해주세요." onChange={handleChange} className={passwordMatch ? 'success' : ''} />
               <label>비밀번호 확인</label>
-              <input type="password" name="passwordCheck" value={formData.passwordCheck} placeholder="비밀번호를 다시 한 번 입력해주세요." onChange={handleChange} className="error" />
-              {formData.password !== formData.passwordCheck && (
+              <input type="password" name="passwordCheck" value={formData.passwordCheck} placeholder="비밀번호를 다시 한 번 입력해주세요." onChange={handleChange} className={passwordMatch ? 'success' : 'error'} />
+              {!passwordMatch && (
                 <span className="error-message">비밀번호가 일치하지 않습니다.</span>
               )}
               <label>이름</label>
               <input type="text" name="userName" value={formData.userName} placeholder="이름을 입력해주세요." onChange={handleChange} />
               <label>생년월일</label>
-              <input type="text" name="birthDate" value={formData.birthDate} placeholder="생년월일을 입력해주세요." onChange={handleChange} />
+              <input type="text" name="birthday" value={formData.birthday} placeholder="생년월일을 입력해주세요." onChange={handleChange} pattern="\d{6}" title="6자리 숫자로 입력해주세요." />
               <p>전화번호, 이메일 등은 알아서 만드삼</p>
               <button type="submit">확인</button>
             </form>
