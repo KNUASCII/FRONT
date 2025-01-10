@@ -21,6 +21,17 @@
   }
 }
 
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @keyframes slideInFromTop {
   from {
     transform: translateY(-30%);
@@ -69,7 +80,7 @@ body {
   border-radius: 30px;
   max-width: 400px;
   min-width: 80px;
-  animation: slideInFromLeft 0.5s ease-out 1.5s forwards;
+  animation: slideInFromRight 0.5s ease-out 1.5s forwards;
   opacity: 0;
 }
 
@@ -204,13 +215,25 @@ body {
 .section5_phrase {
   text-align:center;
   font-size: 1.7em;
-  margin-bottom : 75px;
-  animation: slideInFromTop 0.5s ease-out 1.5s forwards;
-  opacity: 0;
+}
+
+.img-pluscenter{
+  margin-right : 35px;
+}
+
+.img-maeum{
+  margin-left : 35px;
 }
 
 .section6 {
   background-color: #ffffff;
+}
+
+.section6_phrase
+{
+  text-align:center;
+  font-size: 1.7em;
+  margin-bottom : 75px;
 }
 
 
@@ -269,9 +292,8 @@ body {
 }
 
 .text.fade-in-down {
-  transform: translateY(-200px); /* 왼쪽에서 나타남 */
+  transform: translateY(-140px); /* 왼쪽에서 나타남 */
   opacity: 1;
-  transition: all 1.5s ease-out;
 }
 
 .img.fade-in-right {
@@ -287,6 +309,7 @@ body {
 .img.fade-in-up {
   transform: translateY(100px); /* 아래에서 위로 나타남 */
   opacity: 1;
+  transition: all 1.5s ease-out;
 }
 
 .img.fade-in-down {
