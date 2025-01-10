@@ -4,6 +4,13 @@
     height: 100vh;
   }
   
+  .iframe{
+    border: none;
+    align-items: center;
+    width: 700px;
+    height: 700px;
+    margin: 200px auto;
+  }
   .sidebar {
     width: 200px;
     background-color: #f0f0f0;
