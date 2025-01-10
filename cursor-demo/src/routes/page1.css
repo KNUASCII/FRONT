@@ -2,8 +2,12 @@
   --main-bg-color: #d0e7f9;
   --highlight-color: #007bff;
   --button-bg-color: #ffffff;
-  --arrow-color: #FFFFFF;
+  --arrow-color: #000;
   --font-family: 'Noto Sans KR', sans-serif;
+}
+
+.highlight {
+  color: var(--highlight-color);
 }
 
 @keyframes slideInFromLeft {
@@ -13,6 +17,17 @@
   }
   to {
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -51,7 +66,7 @@ body {
   width: 150px; /* 원하는 크기로 설정 */
   height: auto; /* 비율 유지 */
   margin-bottom: 20px;
-  border-radius: 10px;
+  border-radius: 30px;
   max-width: 400px;
   min-width: 80px;
   animation: slideInFromLeft 0.5s ease-out 1.5s forwards;
@@ -106,7 +121,7 @@ body {
 
 /* 하루에 단 1분, 너의 감정을 들여다봐!*/
 .One_Minutes{
-  font-size : 3vw;
+  font-size : 1.5vw;
 }
 
 .section3 {
@@ -186,6 +201,14 @@ body {
   background-color: #ffffff;
 }
 
+.section5_phrase {
+  text-align:center;
+  font-size: 1.7em;
+  margin-bottom : 75px;
+  animation: slideInFromTop 0.5s ease-out 1.5s forwards;
+  opacity: 0;
+}
+
 .section6 {
   background-color: #ffffff;
 }
@@ -196,6 +219,7 @@ body {
 .next-button:hover {
   background-color: var(--highlight-color);
   color: #fff;
+  border: var(--highlight-color);
 }
 
 
@@ -242,6 +266,12 @@ body {
 .text.fade-in-left {
   transform: translateX(-100px); /* 왼쪽에서 나타남 */
   opacity: 1;
+}
+
+.text.fade-in-down {
+  transform: translateY(-200px); /* 왼쪽에서 나타남 */
+  opacity: 1;
+  transition: all 1.5s ease-out;
 }
 
 .img.fade-in-right {

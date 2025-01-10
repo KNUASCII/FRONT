@@ -14,6 +14,10 @@ const LandingPage = () => {
   const { ref: section4Ref, inView: isSection4Visible } = useInView({
     threshold: 0.5, // 섹션 4의 50%가 화면에 보일 때 트리거
   });
+
+  const { ref: section5Ref, inView: isSection5Visible } = useInView({
+    threshold: 0.5, // 섹션 4의 50%가 화면에 보일 때 트리거
+  });
   
   return (
     <div className="landing-page">
@@ -46,7 +50,7 @@ const LandingPage = () => {
                   <p className="section3_phrase">
                     <p style={{ color: "blue", size: "14px" }}>AI 감정일기</p>
                     오늘, 힘든 일이 있었니?<br />
-                    느낀 생각들을 AI 감정 일기에 담아봐.<br />
+                    느낀 생각들을 <strong>AI 감정 일기</strong>에 담아봐.<br />
                     금방 괜찮아질 거야라는 <strong>막연한 말 대신, </strong><br/>
                     <strong>실질적인 조언과 </strong>따뜻한 한마디를 건네줄게.
                   </p>
@@ -64,8 +68,8 @@ const LandingPage = () => {
             <p className="section3_phrase">
               <p style={{ color: "blue", size: "14px" }}>AI 감정 저널링</p>
                 "내 마음을 어제보다 조금 더 잘 아는 방법"<br />
-                매일 쌓인 내 감정을 그래프로 확인할 수 있어.<br />
-                쉽고 편리한 AI 감정 저널링으로 꺼내봐.
+                매일 쌓인 내 감정을 <strong>그래프</strong>로 확인할 수 있어.<br />
+                쉽고 편리한 <strong>AI 감정 저널링</strong>으로 꺼내봐.
             </p>
           </div>
           <div className={`img ${isSection4Visible ? "fade-in-right" : ""}`}>
@@ -76,14 +80,18 @@ const LandingPage = () => {
 
       {/* 섹션 5 */}
       <Element name="section5" className="section section5">
-        <p className = "section3_phrase">힘들거나 도움이 필요할 땐,<br/>
-        교내 상담실 또는 관련 센터로 연결,<br/>
-        "이런 게 있었어?" 싶을 만큼 가까운 도움도 있어.</p>
+        <div ref={section5Ref} className="content">
+            <div className={`text ${isSection5Visible ? "fade-in-down" : ""}`}>
+              <p className = "section5_phrase">힘들거나 도움이 필요할 땐,<br/>
+              교내 상담실 또는 관련 센터로 연결,<br/>
+              "이런 게 있었어?" 싶을 만큼 가까운 도움도 있어.</p>
+            </div>
+        </div>
       </Element>
 
       {/* 섹션 6 */}
       <Element name="section6" className="section section6">
-        <p className = "section3_phrase">매일 기록할수록, 마음이 한결 가벼워질거야.<br/>
+        <p className = "section5_phrase">매일 기록할수록, 마음이 한결 가벼워질거야.<br/>
           지금부터 천천히, 시작해볼래?</p>
           <Link to="section2" smooth={true} duration={500} className="start-button">
             시작하기
