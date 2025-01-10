@@ -1,0 +1,39 @@
+.page1-container {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.main-content {
+  margin-top: 50px;
+}
+
+.highlight {
+  color: #007bff;
+}
+
+.start-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+
+.more-info {
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #fff;
+}
