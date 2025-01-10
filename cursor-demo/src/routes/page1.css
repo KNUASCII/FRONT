@@ -25,20 +25,52 @@ body {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  background-color: #d0e7f9;
 }
 
 
 .section1 {
+  margin-top : 5vh;
   background-image: url('../Images/Input_Background.png'); /* 배경 이미지 추가 */
-  background-size: 1920px 1080px; /* 배경 이미지 크기 조정 */
+  background-size: 100vw 90vh; /* 배경 이미지 크기 조정 */
   background-position: center; /* 배경 이미지 위치 */
   background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
   
 }
+.logo {
+  border-radius: 45px;
+  width: 15vw;                /* 또는 10rem, etc. */
+  height: 15vw;
+  max-width: 200px;
+  min-width: 80px;
+  height: auto;               /* 가로 비율에 맞춰 세로 자동 조정 */
+  
+}
 
+.Intro_Title {
+  font-size: 4vw;
+  margin-bottom: 5vw;
+}
+
+/* 버튼 스타일 */
+.start-button,
+.next-button {
+  padding: 1.5vh 3vh;
+  background-color: var(--button-bg-color);
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
 .section2 {
   background-color: #ffffff;
+}
+
+/* 하루에 단 1분, 너의 감정을 들여다봐!*/
+.One_Minutes{
+  font-size : 3vw;
 }
 
 .section3 {
@@ -52,17 +84,20 @@ body {
   padding: 20px;
 }
 
+.section3_phrase{
+  font-size : 2vw;
+  line-height : 75px;
+}
+
 .section3 .text {
   flex: 1;
-  margin-right: 70px;
-  width: 430px;
+  width: 65vw;
   text-align: left;
 }
 
 .section3 .img {
   flex: 1;
   text-align: center;
-  margin-left: 30px;
 }
 
 .section4 {
@@ -96,20 +131,7 @@ body {
   background-color: #ffffff;
 }
 
-/* 버튼 스타일 */
-.start-button,
-.next-button {
-  margin-top: 20px;
-  padding: 12px 30px;
-  background-color: var(--button-bg-color);
-  border: 2px solid #ccc;
-  border-radius: 50px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
+
 
 .start-button:hover,
 .next-button:hover {
