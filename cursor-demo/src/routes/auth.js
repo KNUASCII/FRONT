@@ -6,10 +6,9 @@ import logo from '../Images/Main_logo.png';
 import emotionDiaryIcon from '../Images/emotionDiary_icon.png';
 import emotionJournalIcon from '../Images/emotionJournal_icon.png';
 import loginIcon from '../Images/login_icon.png'
-import diaryLog from '../Images/diarylog_icon.png'
 import Newdiary from "./newdiary";
 import Stat from "./stat";
-
+import diaryLog from '../Images/diarylog_icon.png'
 
 function RegisterPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -156,7 +155,7 @@ function RegisterPage() {
             </>
           ) : (
             <>
-              <button onClick={openLoginModal} className='iconBtnText'> {/*로그인 아이콘 & 로그인 텍스트*/}
+              <button onClick={openLoginModal} className='loginBtn'> {/*로그인 아이콘 & 로그인 텍스트*/}
                 <img src={loginIcon} alt="로그인 아이콘" className="icon" />
                 로그인</button>
               <button onClick={openModal} className='signUpBtn'>회원가입</button>
@@ -222,7 +221,7 @@ function RegisterPage() {
               value={formData.passwordCheck} 
               placeholder="비밀번호를 다시 한 번 입력해주세요." 
               onChange={handleChange} 
-              className={passwordMatch ? 'success' : 'error'} />
+              className={passwordMatch ? 'success' : formData.passwordCheck !== '' ? 'error' : ''} />
               {!passwordMatch && formData.password !== '' && formData.passwordCheck !== '' && (
                 <span className="error-message">비밀번호가 일치하지 않습니다.</span>
               )}

@@ -119,9 +119,9 @@ const LandingPage = () => {
               지금부터 천천히, 시작해볼래?</p>
           </div>
             <div className={`text ${isSection6Visible ? "fade-in-down" : ""}`}>
-              <Link to="section1" smooth={true} duration={500} className="start-button">
-                시작하기
-              </Link>
+            <RouterLink to="/auth" className="start-button">
+            시작하기
+            </RouterLink>
             </div>
           </div>
       </Element>
