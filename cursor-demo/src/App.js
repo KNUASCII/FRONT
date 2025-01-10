@@ -16,23 +16,6 @@ function App() {
   return (
     <Router>
       <div>
-      <ul>
-            <li>
-              <Link to="/auth">Go to Main</Link>
-            </li>
-            <li>
-              <Link to="/page1">Go to Page1</Link>
-            </li>
-            <li>
-              <Link to="/newdiary">Go to newdiary</Link>
-            </li>
-            <li>
-              <Link to="/stat">Go to Stat</Link>
-            </li>
-            <li>
-              <Link to="/diarylog">Go to Diarylog</Link>
-            </li>
-          </ul>
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/page1" element={<Page1 />} />

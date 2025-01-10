@@ -29,6 +29,8 @@ function RegisterPage() {
     password: '',
   });
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [iframeSrc, setIframeSrc] = useState('');
+  const [isIframeOpen, setIsIframeOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -127,6 +129,12 @@ function RegisterPage() {
     setLoggedInUser(null);
   };
 
+  const handleLinkClick = (e, link) => {
+    e.preventDefault();
+    setIframeSrc(link);
+    setIsIframeOpen(true);
+  };
+
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (user) {
@@ -154,16 +162,18 @@ function RegisterPage() {
             </>
           )}
           <hr style={{border: '1.5px solid #000'}}/>
-          <Link to="/Newdiary" className="menu-item">
+          <a href="/Newdiary" className="menu-item" onClick={(e) => handleLinkClick(e, '/Newdiary')}>
             <img src={emotionDiaryIcon} alt="AI 감정 일기" />
             AI 감정 일기
-          </Link>
-          <Link to="/Stat" className="menu-item">
+          </a>
+          <a href="/Stat" className="menu-item" onClick={(e) => handleLinkClick(e, '/Stat')}>
             <img src={emotionJournalIcon} alt="AI 감정 저널링" />
             AI 감정 저널링
-          </Link>
+          </a>
         </div>
       </div>
+
+      {isIframeOpen && <iframe className='iframe' src={iframeSrc} />}
 
       {isModalOpen && (
         <div className="modal">
