@@ -1,73 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import './registerpage.css';
 
-const Register = () => {
-    const [userID, setUserID] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordCheck, setPasswordCheck] = useState('');
-    const [userName, setUserName] = useState('');
-    const [userAge, setUserAge] = useState('');
-    const [phone, setPhone] = useState('');
-    const [university, setUniversity] = useState('');
-    const [studentId, setStudentId] = useState('');
-    const [department, setDepartment] = useState('');
-    const [grade, setGrade] = useState('');
-    const [isPasswordMatch, setIsPasswordMatch] = useState(null);
+function RegisterPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    userID: '',
+    password: '',
+    passwordCheck: '',
+    userName: '',
+    birthDate: '',
+  });
 
-    useEffect(() => {
-        if (password && passwordCheck) {
-            setIsPasswordMatch(password === passwordCheck);
-        } else {
-            setIsPasswordMatch(null);
-        }
-    }, [password, passwordCheck]);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (password.length < 8 || password !== passwordCheck) {
-            alert('비밀번호가 8자 이상이어야 하며, 비밀번호 확인이 일치해야 합니다.');
-            return;
-        }
-        try {
-            const response = await axios.post('http://localhost:8080/api/auth/register', {
-                userID,
-                password,
-                userName,
-                userAge,
-                phone,
-                university,
-                studentId,
-                department,
-                grade,
-            })
-            alert("회원가입 성공!")
-        } catch (error) {
-            alert("회원가입 중 오류가 발생했습니다.")
-            console.error(error.response.data.message);
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.passwordCheck) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
     }
+    try {
+      const response = await axios.post('http://localhost:8080/api/auth/register', formData);
+      alert('회원가입 성공!');
+      closeModal();
+    } catch (error) {
+      alert('회원가입 중 오류가 발생했습니다.');
+      console.error(error.response.data.message);
+    }
+  };
 
-    return (
-        <div>
-            <h1>회원가입</h1>
+  return (
+    <div className="register-page">
+      <div className="sidebar">
+        <button onClick={openModal}>회원가입</button>
+      </div>
+
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModal}>←</button>
+            <h2>회원가입</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="아이디" value={userID} required onChange={(e) => setUserID(e.target.value)} />
-                <input type="password" placeholder="비밀번호" value={password} required onChange={(e) => setPassword(e.target.value)} />
-                <input type="password" placeholder="비밀번호 확인" value={passwordCheck} required onChange={(e) => setPasswordCheck(e.target.value)} />
-                {isPasswordMatch === null ? '' : isPasswordMatch ? '✅' : '❌'}
-                <input type="text" placeholder="이름" value={userName} required onChange={(e) => setUserName(e.target.value)} />
-                <input type="text" placeholder="나이" value={userAge} required onChange={(e) => setUserAge(e.target.value)} />
-                <input type="text" placeholder="전화번호" value={phone} required onChange={(e) => setPhone(e.target.value)} />
-                <input type="text" placeholder="대학교" value={university} required onChange={(e) => setUniversity(e.target.value)} />
-                <input type="text" placeholder="학번" value={studentId} required onChange={(e) => setStudentId(e.target.value)} />
-                <input type="text" placeholder="학과" value={department} required onChange={(e) => setDepartment(e.target.value)} />
-                <input type="text" placeholder="학년" value={grade} required onChange={(e) => setGrade(e.target.value)} />
-                <button type="submit">회원가입</button>
+              <label>아이디</label>
+              <input type="text" name="userID" value={formData.userID} placeholder="아이디를 입력해주세요." onChange={handleChange} />
+              <label>비밀번호</label>
+              <input type="password" name="password" value={formData.password} placeholder="비밀번호를 입력해주세요." onChange={handleChange} className="success" />
+              <label>비밀번호 확인</label>
+              <input type="password" name="passwordCheck" value={formData.passwordCheck} placeholder="비밀번호를 다시 한 번 입력해주세요." onChange={handleChange} className="error" />
+              {formData.password !== formData.passwordCheck && (
+                <span className="error-message">비밀번호가 일치하지 않습니다.</span>
+              )}
+              <label>이름</label>
+              <input type="text" name="userName" value={formData.userName} placeholder="이름을 입력해주세요." onChange={handleChange} />
+              <label>생년월일</label>
+              <input type="text" name="birthDate" value={formData.birthDate} placeholder="생년월일을 입력해주세요." onChange={handleChange} />
+              <p>전화번호, 이메일 등은 알아서 만드삼</p>
+              <button type="submit">확인</button>
             </form>
+          </div>
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
-export default Register;
+export default RegisterPage;
