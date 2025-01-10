@@ -42,7 +42,9 @@ const Register = () => {
                 department,
                 grade,
             })
+            alert("회원가입 성공!")
         } catch (error) {
+            alert("회원가입 중 오류가 발생했습니다.")
             console.error(error.response.data.message);
         }
     }
