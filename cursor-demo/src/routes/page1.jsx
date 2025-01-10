@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Element } from 'react-scroll';
 import './page1.css'; // 스타일 파일
 import logo from '../Images/Main_logo.png'; // 로고 이미지 경로
+import asciiLogo from '../Images/ASCII_logo.png'; // 이미지 가져오기
 
 const LandingPage = () => {
   return (
@@ -28,14 +29,33 @@ const LandingPage = () => {
 
       {/* 섹션 3 */}
       <Element name="section3" className="section section3">
-        <h2>섹션 3 제목</h2>
-        <p>이곳에 섹션 3의 내용을 추가하세요.</p>
+        <div className="content">
+          <div className="text">
+            <h3>AI 감정 일기</h3>
+            <p>오늘, 힘든 일이 있었니?<br/>
+지금 느낀 생각을 AI 감정 일기에 담아봐.<br/>
+금방 괜찮아질 거야라는 막연한 말 대신,<br/>
+실질적인 조언과 따뜻한 한마디를 건네줄게.</p>
+          </div>
+          <div className="img">
+            <img src={asciiLogo} alt="ASCII" />
+          </div>
+        </div>
       </Element>
 
       {/* 섹션 4 */}
       <Element name="section4" className="section section4">
-        <h2>섹션 4 제목</h2>
-        <p>이곳에 섹션 4의 내용을 추가하세요.</p>
+        <div className="content">
+          <div className="text">
+            <h3>AI 감정 일기</h3>
+            <p>"내 마음을 어제보다 조금 더 잘 아는 방법"<br/>
+하루하루 쌓인 내 감정을 그래프로 확인할 수 있어.<br/>
+쉽고 편리한 AI 감정 저널링으로 꺼내봐.</p>
+          </div>
+          <div className="img">
+            <img src={asciiLogo} alt="ASCII" />
+          </div>
+        </div>
       </Element>
 
       {/* 섹션 5 */}
