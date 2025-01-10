@@ -152,14 +152,14 @@ function RegisterPage() {
   return (
     <div className="register-page">
       <div className="sidebar">
-        <img src={logo} alt="MA:IN 로고" className="logo" />
+        <img src={logo} alt="MA:IN 로고" className="logo_main" />
         <div className="menu">
-          <hr style={{border: '1.5px solid #000'}}/>
+          <hr style={{border: '1px solid #e2e2e2'}}/>
           {loggedInUser ? (
             <>
-              <p className='userName'>반갑습니다. {loggedInUser}님</p>
+              <p className='userName'>반갑습니다,<br/><strong style = {{fontSize:"20px" }}>{loggedInUser}</strong> 님</p>
               <button onClick={handleLogout} className="logout-button">로그아웃</button>
-              <hr style={{border: '1.5px solid #000'}}/>
+              <hr style={{border: '1px solid #e2e2e2'}}/>
               <a href="/Newdiary" className="menu-item" onClick={(e) => handleLinkClick(e, '/Newdiary')}>
                 <img src={emotionDiaryIcon} alt="AI 감정 일기" />
                 AI 감정 일기
@@ -177,12 +177,12 @@ function RegisterPage() {
             <>
               <button onClick={openLoginModal} className='loginBtn'> {/*로그인 아이콘 & 로그인 텍스트*/}
                 <img src={loginIcon} alt="로그인 아이콘" className="icon" />
-                로그인</button>
+                <strong>로그인</strong></button>
               <button onClick={openModal} className='signUpBtn'>회원가입</button>
-              <p>회원가입을 하여 많은 정보를 얻어보세요!</p>
+              <p style={{marginLeft: '20px', color: 'grey'}}><strong>로그인이 필요합니다.</strong></p>
             </>
           )}
-          <hr style={{border: '1.5px solid #000'}}/>
+          <hr style={{border: '1px solid #e2e2e2'}}/>
         </div>
       </div>
 
@@ -302,7 +302,7 @@ function RegisterPage() {
         </div>
       )}
       <div className="right-page">
-        <div style={{margin:'300px 300px 300px 300px'}} className="right-page-content">
+        <div className="right-page-content">
           {asideSrc === '/Newdiary' && <Newdiary />}
           {asideSrc === '/Stat' && <Stat />}
           {asideSrc === '/diarylog' && <Diarylog />}

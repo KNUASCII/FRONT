@@ -14,10 +14,12 @@
     align-items: center;
   }
   
-  .logo{
-    width: 100px;
+  .logo_main{
+    margin-right: 5px;
+    width: 80px;
     margin-bottom: 20px;
-    border-radius : 35px;
+    margin-top: 20px;
+    border-radius : 15px;
   }
   
   .menu {
@@ -41,13 +43,15 @@
   }
   
   .menu-item {
+    height: 45px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: black;
     padding: 10px 0;
     transition: color 0.3s;
-    margin-left : 45px;
+    margin-left : 40px;
   }
   
   .menu-item img {
@@ -144,6 +148,7 @@
   }
   
   .loginBtn{
+      margin-left: 20px;
       margin-top: 3vh;
   }
   
@@ -174,18 +179,14 @@
   /*로그아웃 버튼*/
   .menu .logout-button {
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
     transition: background-color 0.3s;
-    padding-left: 65pt;
+    padding-left: 55pt;
+    color:red;
     
   }
   
-  .logout-button:hover {
-    background-color: rgb(255, 48, 48);
-  }
 
   /*반갑습니다 XXX님 부분 태그*/
   .userName{
@@ -202,4 +203,16 @@
     margin-left: 28px;
     margin-bottom: 50px;
     margin-top: -8px;
+  }
+
+  .right-page{
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left:30%;
+  }
+  .register-page-content{
+    left: 50%;
+    transform: translateX(-50%);  
   }
