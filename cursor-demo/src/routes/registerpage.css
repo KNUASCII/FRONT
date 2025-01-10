@@ -147,3 +147,43 @@
   .signupBtn{
       margin-bottom: 4vh;
   }
+
+  .icon {
+    width: 20px; /* 아이콘 크기 */
+    height: auto;
+    margin-right: 8px; /* 텍스트와의 간격 */
+    vertical-align: middle; /* 텍스트와 수직 정렬 */
+    border-radius: 100%;
+    background-color: lightslategray;
+  }
+  
+  .menu button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 0;
+  }
+
+  /*로그아웃 버튼*/
+  .menu .logout-button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    padding-left: 65pt;
+    
+  }
+  
+  .logout-button:hover {
+    background-color: rgb(255, 48, 48);
+  }
+
+  /*반갑습니다 XXX님 부분 태그*/
+  .userName{
+    text-align: center;
+  }
