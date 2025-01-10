@@ -6,6 +6,7 @@ import logo from '../Images/Main_logo.png';
 import emotionDiaryIcon from '../Images/emotionDiary_icon.png';
 import emotionJournalIcon from '../Images/emotionJournal_icon.png';
 import loginIcon from '../Images/login_icon.png'
+import diaryLog from '../Images/diarylog_icon.png'
 import Newdiary from "./newdiary";
 import Stat from "./stat";
 
@@ -155,10 +156,10 @@ function RegisterPage() {
             </>
           ) : (
             <>
-              <button onClick={openLoginModal}>
+              <button onClick={openLoginModal} className='iconBtnText'> {/*로그인 아이콘 & 로그인 텍스트*/}
                 <img src={loginIcon} alt="로그인 아이콘" className="icon" />
                 로그인</button>
-              <button onClick={openModal}>회원가입</button>
+              <button onClick={openModal} className='signUpBtn'>회원가입</button>
             </>
           )}
           <hr style={{border: '1.5px solid #000'}}/>
@@ -169,6 +170,10 @@ function RegisterPage() {
           <a href="/Stat" className="menu-item" onClick={(e) => handleLinkClick(e, '/Stat')}>
             <img src={emotionJournalIcon} alt="AI 감정 저널링" />
             AI 감정 저널링
+          </a>
+          <a href="/diarylog" className="menu-item" onClick={(e) => handleLinkClick(e, '/diarylog')}>
+            <img src={diaryLog} alt="나의 일기장" />
+            나의 일기장
           </a>
         </div>
       </div>

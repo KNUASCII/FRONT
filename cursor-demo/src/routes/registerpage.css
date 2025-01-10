@@ -162,6 +162,7 @@
     vertical-align: middle; /* 텍스트와 수직 정렬 */
     border-radius: 100%;
     background-color: lightslategray;
+    padding: 10pt;
   }
   
   .menu button {
@@ -193,4 +194,16 @@
   /*반갑습니다 XXX님 부분 태그*/
   .userName{
     text-align: center;
+  }
+  
+  .iconBtnText{
+    margin-top: 20pt;
+    margin-left: 20pt;
+  }
+
+  .signUpBtn{
+    font-size: 12px !important;
+    margin-left: 28px;
+    margin-bottom: 50px;
+    margin-top: -8px;
   }
