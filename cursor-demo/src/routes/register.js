@@ -4,7 +4,10 @@ import axios from 'axios';
 import './registerpage.css';
 import logo from '../Images/Main_logo.png';
 import emotionDiaryIcon from '../Images/emotionDiary_icon.png';
-import emotionJournalIcon from '../Images/emotionJournal_icon.png'
+import emotionJournalIcon from '../Images/emotionJournal_icon.png';
+import Newdiary from "./newdiary";
+import Stat from "./stat";
+
 
 function RegisterPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,15 +53,15 @@ function RegisterPage() {
       <div className="sidebar">
         <img src={logo} alt="MA:IN 로고" className="logo" />
         <div className="menu">
+          <hr style={{border: '1.5px solid #000'}}/>
           <button>로그인</button>
-          <hr />
           <button onClick={openModal}>회원가입</button>
-          <hr />
-          <Link to="/emotion" className="menu-item">
+          <hr style={{border: '1.5px solid #000'}}/>
+          <Link to="/Newdiary" className="menu-item">
             <img src={emotionDiaryIcon} alt="AI 감정 일기" />
             AI 감정 일기
           </Link>
-          <Link to="/emotion" className="menu-item">
+          <Link to="/Stat" className="menu-item">
             <img src={emotionJournalIcon} alt="AI 감정 저널링" />
             AI 감정 저널링
           </Link>
