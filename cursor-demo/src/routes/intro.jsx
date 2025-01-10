@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Element } from 'react-scroll';
-import './page1.css'; // 스타일 파일
+import './intro.css'; // 스타일 파일
 import { useInView } from "react-intersection-observer";
 import logo from '../Images/Main_logo.png'; // 로고 이미지 경로
 import asciiLogo from '../Images/ASCII_logo.png'; // 이미지 가져오기
@@ -36,9 +36,9 @@ const LandingPage = () => {
             <span className="highlight">강냉이</span>를 위한<br />
             AI 일상 감정정리
           </h1>
-          <Link to="section2" smooth={true} duration={500} className="start-button">
+          <RouterLink to="/auth" className="start-button">
             시작하기
-          </Link>
+            </RouterLink>
           <div className="arrow">
             <Link to="section2" smooth={true} duration={500} className="arrow-shape"></Link>
           </div>
@@ -112,9 +112,9 @@ const LandingPage = () => {
               지금부터 천천히, 시작해볼래?</p>
           </div>
             <div className={`text ${isSection6Visible ? "fade-in-down" : ""}`}>
-              <RouterLink to="/auth" className="start-button">
+              <Link to="section1" smooth={true} duration={500} className="start-button">
                 시작하기
-              </RouterLink>
+              </Link>
             </div>
           </div>
       </Element>
