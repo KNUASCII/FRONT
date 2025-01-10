@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Element } from 'react-scroll';
 import './page1.css'; // 스타일을 위한 CSS 파일
-import logo from './Images/MAIN 로고.png'; // 로고 이미지 경로
+import logo from '../Images/Main_logo.png'; // 로고 이미지 경로
 
 const Page1 = () => {
   return (
@@ -26,11 +26,5 @@ const Page1 = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <Page1 />
-  </React.StrictMode>
-);
 
 export default Page1;
