@@ -10,6 +10,9 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const LandingPage = () => {
   // useInView를 사용해 ref와 상태값 정의
+  const { ref: section2Ref, inView: isSection2Visible } = useInView({
+    threshold: 0.5, // 50% 화면에 보일 때 트리거
+  });
   const { ref: section3Ref, inView: isSection3Visible } = useInView({
     threshold: 0.5, // 50% 화면에 보일 때 트리거
   });
@@ -47,7 +50,11 @@ const LandingPage = () => {
 
       {/* 섹션 2 */}
       <Element name="section2" className="section section2">
-        <p className = "One_Minutes">"하루에 단 1분, 너의 감정을 들여다 봐!"</p>
+        <div ref={section2Ref} className="content">
+            <div className={`text ${isSection2Visible ? "fade-in-down" : ""}`}>
+              <p className = "One_Minutes">“하루에 단 1분,<br/>너의 <strong style={{ fontSize: '3vw', color: "red" }}>감정</strong>을 들여다 봐!”</p>
+            </div>
+        </div>
       </Element>
 
       {/* 섹션 3 */}
