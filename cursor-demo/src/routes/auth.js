@@ -1,3 +1,4 @@
+// 회원가입 페이지
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
