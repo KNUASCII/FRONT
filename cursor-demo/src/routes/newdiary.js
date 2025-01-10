@@ -3,15 +3,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Emotion = () => {
-    const [emotion, setEmotion] = useState('');
+const Newdiary = () => {
+    const [diaryText, setdiaryText] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(emotion);
+        console.log();
 
         try {
-            const response = await axios.post('http://localhost:8080/api/emotion', { emotion });
+            const response = await axios.post('http://localhost:8080/api/diary/newDiary', { diaryText });
             console.log(response.data);
         } catch (error) {
             console.error(error);
@@ -26,8 +26,8 @@ const Emotion = () => {
                 type="text" 
                 style={{width: '500px', height: '300px'}} 
                 placeholder="감정을 작성해주세요" 
-                value={emotion}
-                onChange={(e) => setEmotion(e.target.value)}
+                value={diaryText}
+                onChange={(e) => setdiaryText(e.target.value)}
                 required
                 />
                 <button type="submit">작성</button>
@@ -36,4 +36,4 @@ const Emotion = () => {
     )
 }
 
-export default Emotion;
+export default Newdiary;
