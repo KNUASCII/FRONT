@@ -5,6 +5,7 @@ import './registerpage.css';
 import logo from '../Images/Main_logo.png';
 import emotionDiaryIcon from '../Images/emotionDiary_icon.png';
 import emotionJournalIcon from '../Images/emotionJournal_icon.png';
+import loginIcon from '../Images/login_icon.png'
 import Newdiary from "./newdiary";
 import Stat from "./stat";
 
@@ -141,12 +142,14 @@ function RegisterPage() {
           <hr style={{border: '1.5px solid #000'}}/>
           {loggedInUser ? (
             <>
-              <p>반갑습니다. {loggedInUser}님</p>
-              <button onClick={handleLogout}>로그아웃</button>
+              <p className='userName'>반갑습니다. {loggedInUser}님</p>
+              <button onClick={handleLogout} className="logout-button">로그아웃</button>
             </>
           ) : (
             <>
-              <button onClick={openLoginModal}>로그인</button>
+              <button onClick={openLoginModal}>
+                <img src={loginIcon} alt="로그인 아이콘" className="icon" />
+                로그인</button>
               <button onClick={openModal}>회원가입</button>
             </>
           )}
