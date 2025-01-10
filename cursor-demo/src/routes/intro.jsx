@@ -8,6 +8,7 @@ import pluscenter from '../Images/KNU_PlusCenter.png';
 import maeum from '../Images/KNU_MaeumCenter.png';
 import { Link as RouterLink } from 'react-router-dom';
 import Downarrow from '../Images/Downarrow.png'; // 저장한 이미지 경로
+import graph from '../Images/Graph.png'; // 저장한 이미지 경로
 
 
 const LandingPage = () => {
@@ -95,7 +96,7 @@ const LandingPage = () => {
             </p>
           </div>
           <div className={`img ${isSection4Visible ? "fade-in-right" : ""}`}>
-            <img src={asciiLogo} alt="ASCII" />
+            <img src={graph} alt="Graph" />
           </div>
         </div>
       </Element>
