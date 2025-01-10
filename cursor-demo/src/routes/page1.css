@@ -2,8 +2,19 @@
   --main-bg-color: #d0e7f9;
   --highlight-color: #007bff;
   --button-bg-color: #ffffff;
-  --arrow-color: #000;
+  --arrow-color: #FFFFFF;
   --font-family: 'Noto Sans KR', sans-serif;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 body {
@@ -34,8 +45,8 @@ body {
   background-size: 100vw 90vh; /* 배경 이미지 크기 조정 */
   background-position: center; /* 배경 이미지 위치 */
   background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
-  
 }
+
 .logo {
   border-radius: 45px;
   width: 15vw;                /* 또는 10rem, etc. */
@@ -43,13 +54,17 @@ body {
   max-width: 200px;
   min-width: 80px;
   height: auto;               /* 가로 비율에 맞춰 세로 자동 조정 */
-  
+  animation: slideInFromLeft 0.5s ease-out 1.5s forwards;
+  opacity: 0;
 }
 
 .Intro_Title {
   font-size: 4vw;
   margin-bottom: 5vw;
+  opacity: 0;
+  animation: slideInFromLeft 1s ease-out 0.5s forwards;
 }
+
 
 /* 버튼 스타일 */
 .start-button,
@@ -63,7 +78,28 @@ body {
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
+  animation: slideInFromLeft 1s ease-out 2s forwards;
+  opacity: 0;
 }
+
+/* 화살표 애니메이션 */
+.arrow {
+  display: flex; /* 정렬 용도로 사용 */
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-shape {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid var(--arrow-color);
+  margin-top: 200px;
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+}
+
 .section2 {
   background-color: #ffffff;
 }
@@ -74,7 +110,10 @@ body {
 }
 
 .section3 {
-  background-color: #ffffff;
+  width: 100%; /* 섹션 전체 너비 */
+  max-width: 1200px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 20px; /* 내부 여백 */
 }
 
 .section3 .content {
@@ -85,19 +124,26 @@ body {
 }
 
 .section3_phrase{
-  font-size : 2vw;
-  line-height : 75px;
+  font-size: 1vw;
+  line-height: 1.5; /* 텍스트 크기에 비례한 줄 간격 */
+  margin-right: 10px;
+  text-align : left;
+  max-width: 500px; /* 텍스트 최대 너비 */
 }
 
 .section3 .text {
   flex: 1;
-  width: 65vw;
+  margin-right: 0px;
+  width: 530px;
   text-align: left;
 }
 
 .section3 .img {
-  flex: 1;
-  text-align: center;
+  flex: 1; /* 텍스트와 이미지가 같은 비율로 공간 차지 */
+  max-width: 300px; /* 이미지 최대 너비 */
+  text-align: center; /* 이미지 중앙 정렬 */
+  margin: 0; /* 모든 여백 제거 */
+  padding: 0; /* 모든 패딩 제거 */
 }
 
 .section4 {
@@ -139,16 +185,6 @@ body {
   color: #fff;
 }
 
-/* 화살표 애니메이션 */
-.arrow {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 20px solid var(--arrow-color);
-  margin: 200px auto 0;
-  animation: bounce 1.5s infinite;
-}
 
 @keyframes bounce {
   0%, 100% {
@@ -180,4 +216,37 @@ body {
 
 .navigation a:hover {
   background: #0056b3;
+}
+
+/* 공통 초기 상태 */
+.text,
+.img {
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+/* 특정 이미지 애니메이션 */
+.text.fade-in-left {
+  transform: translateX(-100px); /* 왼쪽에서 나타남 */
+  opacity: 1;
+}
+
+.img.fade-in-right {
+  transform: translateX(100px); /* 오른쪽에서 나타남 */
+  opacity: 1;
+}
+
+.img.fade-in-left {
+  transform: translateX(-100px); /* 왼쪽에서 나타남 */
+  opacity: 1;
+}
+
+.img.fade-in-up {
+  transform: translateY(100px); /* 아래에서 위로 나타남 */
+  opacity: 1;
+}
+
+.img.fade-in-down {
+  transform: translateY(-100px); /* 위에서 아래로 나타남 */
+  opacity: 1;
 }

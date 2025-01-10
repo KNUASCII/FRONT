@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link, Element } from 'react-scroll';
 import './page1.css'; // 스타일 파일
+import { useInView } from "react-intersection-observer";
 import logo from '../Images/Main_logo.png'; // 로고 이미지 경로
 import asciiLogo from '../Images/ASCII_logo.png'; // 이미지 가져오기
 
 const LandingPage = () => {
+  // useInView를 사용해 ref와 상태값 정의
+  const { ref: section3Ref, inView: isSection3Visible } = useInView({
+    threshold: 0.5, // 50% 화면에 보일 때 트리거
+  });
+
+  const { ref: section4Ref, inView: isSection4Visible } = useInView({
+    threshold: 0.5, // 섹션 4의 50%가 화면에 보일 때 트리거
+  });
+  
   return (
     <div className="landing-page">
       {/* 섹션 1 */}
@@ -18,42 +28,47 @@ const LandingPage = () => {
           <Link to="section2" smooth={true} duration={500} className="start-button">
             시작하기
           </Link>
-          <div className="arrow"></div>
+          <div className="arrow">
+            <Link to="section2" smooth={true} duration={500} className="arrow-shape"></Link>
+          </div>
         </header>
       </Element>
 
       {/* 섹션 2 */}
       <Element name="section2" className="section section2">
-        <p className = "One_Minutes">“하루에 단 1분, 너의 감정을 들여다봐!”</p>
+        <p className = "One_Minutes">“하루에 단 1분, 너의 감정을 들여다 봐!”</p>
       </Element>
 
       {/* 섹션 3 */}
       <Element name="section3" className="section section3">
-        <div className="content">
-          <div className="text">
-            <h2 style={{ color: "blue" }}>AI 감정 일기</h2>
-              <p className = "section3_phrase">오늘, 힘든 일이 있었니?<br/>
-                  지금 느낀 생각을 AI 감정 일기에 담아봐.<br/>
-                  금방 괜찮아질 거야라는 막연한 말 대신,<br/>
-                  실질적인 조언과 따뜻한 한마디를 건네줄게.
-              </p>
-          </div>
-          <div className="img">
+        <div ref={section3Ref} className="content">
+            <div className={`text ${isSection3Visible ? "fade-in-left" : ""}`}>
+              <h2 style={{ color: "blue" }}>AI 감정 일기</h2>
+                  <p className="section3_phrase">
+                    오늘, 힘든 일이 있었니?<br />
+                    느낀 생각들을 AI 감정 일기에 담아봐.<br />
+                    금방 괜찮아질 거야라는 <strong>막연한 말 대신, </strong><br/>
+                    <strong>실질적인 조언과 </strong>따뜻한 한마디를 건네줄게.
+                  </p>
+              </div>
+          <div className={`img ${isSection3Visible ? "fade-in-right" : ""}`}>
             <img src={asciiLogo} alt="ASCII" />
           </div>
         </div>
       </Element>
 
       {/* 섹션 4 */}
-      <Element name="section4" className="section section3">
-        <div className="content">
-          <div className="text">
-            <h2 style={{color : "blue"}}>AI 감정 일기</h2>
-            <p className = "section3_phrase">"내 마음을 어제보다 조금 더 잘 아는 방법"<br/>
-                매일 쌓인 내 감정을 그래프로 확인할 수 있어.<br/>
-                쉽고 편리한 AI 감정 저널링으로 꺼내봐.</p>
+      <Element name="section4" className="section section4">
+        <div ref={section4Ref} className="content">
+          <div className={`text ${isSection4Visible ? "fade-in-left" : ""}`}>
+            <h2 style={{ color: "blue" }}>AI 감정 저널링</h2>
+            <p className="section3_phrase">
+              "내 마음을 어제보다 조금 더 잘 아는 방법"<br />
+              매일 쌓인 내 감정을 그래프로 확인할 수 있어.<br />
+              쉽고 편리한 AI 감정 저널링으로 꺼내봐.
+            </p>
           </div>
-          <div className="img">
+          <div className={`img ${isSection4Visible ? "fade-in-right" : ""}`}>
             <img src={asciiLogo} alt="ASCII" />
           </div>
         </div>
