@@ -9,12 +9,21 @@ function Diarylog() {
 
     useEffect(() => {
         const fetchData = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert("로그인이 필요합니다.");
+                window.location.href = '/login';
+                return;
+            }
             try {
-                const response = await axios.get('http://localhost:8080/api/diary/userDiary', {
-                    withCredentials: true  // 쿠키 전송을 위해 추가
+                const response = await axios.get('http://localhost:8080/api/diary/getDiary', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
                 });
-                if (response.data && Array.isArray(response.data)) {
-                    setDiaryData(response.data);
+
+                if (response.data && Array.isArray(response.data.diaries)) {
+                    setDiaryData(response.data.diaries);
                 }
             } catch (e) {
                 console.error("서버 연결 실패!", e);
@@ -42,27 +51,20 @@ function Diarylog() {
 
     return (
         <div className="book">
-            {diaryData.map((diary, index) => (
-                <div
-                    className={`page ${index === currentPage ? 'active' : 'inactive'}`}
-                    key={diary.id}
-                >
-                    <div className="content">
-                        <h2>{diary.title}</h2>
-                        <p>{diary.content}</p>
-                        <p className="date">{new Date(diary.createdAt).toLocaleDateString()}</p>
-                    </div>
-                    <div className="navigation">
-                        {currentPage > 0 && (
-                            <button onClick={prevPage} className="arrow left">이전</button>
-                        )}
-                        {currentPage < diaryData.length - 1 && (
-                            <button onClick={nextPage} className="arrow right">다음</button>
-                        )}
-                    </div>
-                </div>
-            ))}
+            <div className="page active">
+                <div className="content">
+                    <h2>{new Date(diaryData[currentPage].diaryDate).toLocaleDateString()}</h2>
+                    <p>{diaryData[currentPage].diaryText}</p>
+                    <p className="emotion">감정 분석: {JSON.parse(diaryData[currentPage].emotionData).emotionAnalysis}</p>
+                    
+                    
+                </div>  
+                
+            </div>
+            <button onClick={prevPage} className="arrow left">이전</button>
+            <button onClick={nextPage} className="arrow right">다음</button>
         </div>
+        
     );
 }
 
