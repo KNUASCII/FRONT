@@ -9,7 +9,7 @@ const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2
     // 서버에서 데이터를 가져오는 함수
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/stats'); // 서버 URL을 입력하세요
+        const response = await axios.get('http://localhost:8080/api/emotion/userEmotion'); // 서버 URL을 입력하세요
         setStats(response.data); // 받아온 데이터로 상태 업데이트
       } catch (error) {
         console.error("서버에서 데이터를 가져오는데 실패했습니다.", error);
