@@ -18,7 +18,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/auth" element={<Auth />} />
-          <Route path="/page1" element={<Page1 />} />
+          <Route path="/" element={<Page1 />} />
           <Route path="/newdiary" element={<Newdiary />} />
           <Route path="/stat" element={<Stat />} />
           <Route path="/diarylog" element={<Diarylog />} />
