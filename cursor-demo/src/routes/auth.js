@@ -9,6 +9,7 @@ import loginIcon from '../Images/login_icon.png'
 import Newdiary from "./newdiary";
 import Stat from "./stat";
 import diaryLog from '../Images/diarylog_icon.png'
+import Diarylog from "./diarylog";
 
 function RegisterPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +30,7 @@ function RegisterPage() {
     password: '',
   });
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const [iframeSrc, setIframeSrc] = useState('');
+  const [asideSrc, setAsideSrc] = useState('');
   const [isIframeOpen, setIsIframeOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -89,7 +90,6 @@ function RegisterPage() {
       return;
     }
     try {
-    console.log(formData);
       const response = await axios.post('http://localhost:8080/api/auth/register', formData);
       alert('회원가입 성공!');
       closeModal();
@@ -113,6 +113,7 @@ function RegisterPage() {
 
     try {
       const response = await axios.post('http://localhost:8080/api/auth/login', loginData);
+      console.log(response.data);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', loginData.userID);
       alert('로그인 성공!');
@@ -131,8 +132,7 @@ function RegisterPage() {
 
   const handleLinkClick = (e, link) => {
     e.preventDefault();
-    setIframeSrc(link);
-    setIsIframeOpen(true);
+    setAsideSrc(link);
   };
 
   useEffect(() => {
@@ -176,8 +176,6 @@ function RegisterPage() {
           </a>
         </div>
       </div>
-
-      {isIframeOpen && <iframe className='iframe' src={iframeSrc} />}
 
       {isModalOpen && (
         <div className="modal">
@@ -291,8 +289,16 @@ function RegisterPage() {
               <button type="submit">로그인</button>
             </form>
           </div>
+          
         </div>
       )}
+      <div className="right-page">
+        <div className="right-page-content">
+          {asideSrc === '/Newdiary' && <Newdiary />}
+          {asideSrc === '/Stat' && <Stat />}
+          {asideSrc === '/diarylog' && <Diarylog />}
+        </div>
+      </div>
     </div>
   );
 }

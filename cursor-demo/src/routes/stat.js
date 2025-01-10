@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios'; // axios 라이브러리 import
 
 const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2 }) => {
-  const [stats, setStats] = useState({joy:0, sadness:0, anger:0, anxiety:0, lethargy:0}); // 초기 상태 설정 단점: 오각형 모양이 1,0,1,0,1 이렇게 하면 모양이 이상해짐.
+  const [stats, setStats] = useState({기쁨:0.1, 슬픔:0.1, 분노:0.1, 불안:0.1, 무기력:0.1}); // 초기 상태 설정 단점: 오각형 모양이 1,0,1,0,1 이렇게 하면 모양이 이상해짐.
 
   useEffect(() => {
     // 서버에서 데이터를 가져오는 함수
