@@ -132,7 +132,9 @@ body {
 
 /* 하루에 단 1분, 너의 감정을 들여다봐!*/
 .One_Minutes{
-  font-size : 1.5vw;
+  text-align : center;
+  font-size : 2.5vw;
+  margin-bottom : 150px;
 }
 
 .section3 {
@@ -152,7 +154,7 @@ body {
 
 .section3_phrase{
   width: 500px;
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   line-height: 2.0; /* 텍스트 크기에 비례한 줄 간격 */
   margin-right: 10px;
   text-align : left;
@@ -330,4 +332,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.FakeFooter {
+  position: fixed; /* 화면에 고정 */
+  bottom: 0; /* 화면 하단에 위치 */
+  left: 0; /* 화면의 왼쪽부터 */
+  width: 100%; /* 화면 전체 너비 */
+  height: 30%; /* 높이 설정 */
+  background-color: #000; /* 배경색 검정 */
+  font-size: 12px; /* 글씨 크기 */
+  color: #FFFFFF; /* 글씨 색상 */
 }
