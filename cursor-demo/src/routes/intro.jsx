@@ -7,8 +7,13 @@ import asciiLogo from '../Images/ASCII_logo.png'; // 이미지 가져오기
 import pluscenter from '../Images/KNU_PlusCenter.png';
 import maeum from '../Images/KNU_MaeumCenter.png';
 import { Link as RouterLink } from 'react-router-dom';
+import Downarrow from '../Images/Downarrow.png'; // 저장한 이미지 경로
+
 
 const LandingPage = () => {
+  const { ref: section1Ref, inView: isSection1Visible } = useInView({
+    threshold: 0.5, // 50% 화면에 보일 때 트리거
+  });
   // useInView를 사용해 ref와 상태값 정의
   const { ref: section2Ref, inView: isSection2Visible } = useInView({
     threshold: 0.5, // 50% 화면에 보일 때 트리거
@@ -33,7 +38,6 @@ const LandingPage = () => {
     <div className="landing-page">
       {/* 섹션 1 */}
       <Element name="section1" className="section section1">
-        <header className="header">
           <img src={logo} alt="MA:IN 로고" className="logo" />
           <h1 className="Intro_Title">
             <span className="highlight">강냉이</span>를 위한<br />
@@ -41,11 +45,15 @@ const LandingPage = () => {
           </h1>
           <RouterLink to="/auth" className="start-button">
             시작하기
-            </RouterLink>
-          <div className="arrow">
-            <Link to="section2" smooth={true} duration={500} className="arrow-shape"></Link>
-          </div>
-        </header>
+          </RouterLink>
+          <Link
+            to="section2"
+            smooth={true}
+            duration={500}
+            className="scroll-arrow"
+          >
+          <img src={Downarrow} alt="Scroll Down" className="down-arrow" />
+        </Link>
       </Element>
 
       {/* 섹션 2 */}
@@ -128,21 +136,5 @@ const LandingPage = () => {
     </div>
   );
 };
-
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="footer-content">
-        <p>© 2025 Your Company Name. All Rights Reserved.</p>
-        <ul className="footer-links">
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/contact">Contact Us</a></li>
-        </ul>
-      </div>
-    </footer>
-  );
-};
-
 
 export default LandingPage;
