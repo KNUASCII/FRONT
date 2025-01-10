@@ -1,6 +1,5 @@
 // 회원가입 페이지
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './registerpage.css';
 import logo from '../Images/Main_logo.png';
@@ -32,7 +31,6 @@ function RegisterPage() {
   });
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [asideSrc, setAsideSrc] = useState('');
-  const [isIframeOpen, setIsIframeOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -91,7 +89,14 @@ function RegisterPage() {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/register', formData);
+      console.log(formData);
+      const response = await axios.post('http://localhost:8080/api/auth/register', 
+        {
+        userID: formData.userID,
+        password: formData.password,
+        userName: formData.userName,
+        birthday: formData.birthday,
+      });
       alert('회원가입 성공!');
       closeModal();
     } catch (error) {
@@ -113,6 +118,7 @@ function RegisterPage() {
     e.preventDefault();
 
     try {
+      console.log(loginData);
       const response = await axios.post('http://localhost:8080/api/auth/login', loginData);
       console.log(response.data);
       localStorage.setItem('token', response.data.token);
@@ -153,6 +159,19 @@ function RegisterPage() {
             <>
               <p className='userName'>반갑습니다. {loggedInUser}님</p>
               <button onClick={handleLogout} className="logout-button">로그아웃</button>
+              <hr style={{border: '1.5px solid #000'}}/>
+              <a href="/Newdiary" className="menu-item" onClick={(e) => handleLinkClick(e, '/Newdiary')}>
+                <img src={emotionDiaryIcon} alt="AI 감정 일기" />
+                AI 감정 일기
+              </a>
+              <a href="/Stat" className="menu-item" onClick={(e) => handleLinkClick(e, '/Stat')}>
+                <img src={emotionJournalIcon} alt="AI 감정 저널링" />
+                AI 감정 저널링
+              </a>
+              <a href="/diarylog" className="menu-item" onClick={(e) => handleLinkClick(e, '/diarylog')}>
+                <img src={diaryLog} alt="나의 일기장" />
+                나의 일기장
+              </a>
             </>
           ) : (
             <>
@@ -160,21 +179,10 @@ function RegisterPage() {
                 <img src={loginIcon} alt="로그인 아이콘" className="icon" />
                 로그인</button>
               <button onClick={openModal} className='signUpBtn'>회원가입</button>
+              <p>회원가입을 하여 많은 정보를 얻어보세요!</p>
             </>
           )}
           <hr style={{border: '1.5px solid #000'}}/>
-          <a href="/Newdiary" className="menu-item" onClick={(e) => handleLinkClick(e, '/Newdiary')}>
-            <img src={emotionDiaryIcon} alt="AI 감정 일기" />
-            AI 감정 일기
-          </a>
-          <a href="/Stat" className="menu-item" onClick={(e) => handleLinkClick(e, '/Stat')}>
-            <img src={emotionJournalIcon} alt="AI 감정 저널링" />
-            AI 감정 저널링
-          </a>
-          <a href="/diarylog" className="menu-item" onClick={(e) => handleLinkClick(e, '/diarylog')}>
-            <img src={diaryLog} alt="나의 일기장" />
-            나의 일기장
-          </a>
         </div>
       </div>
 
@@ -294,7 +302,7 @@ function RegisterPage() {
         </div>
       )}
       <div className="right-page">
-        <div className="right-page-content">
+        <div style={{margin:'300px 300px 300px 300px'}} className="right-page-content">
           {asideSrc === '/Newdiary' && <Newdiary />}
           {asideSrc === '/Stat' && <Stat />}
           {asideSrc === '/diarylog' && <Diarylog />}

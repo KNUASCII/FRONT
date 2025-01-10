@@ -12,11 +12,15 @@ const Newdiary = () => {
         console.log();
 
         try {
-            console.log(diaryText);
-            const response = await axios.post('http://localhost:8080/api/diary/newDiary', { diaryText });
+            const token = localStorage.getItem('token');  // 또는 sessionStorage 등을 사용
+            const response = await axios.post('http://localhost:8080/api/diary/newDiary', {
+                diaryText: diaryText  // 요청 본문으로 데이터를 전달
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                 },
+            });
             console.log(response.data);
-            setCounselResult(response.data);
-            setdiaryText('');
         } catch (error) {
             console.error(error);
         }
