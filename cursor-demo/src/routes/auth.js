@@ -135,6 +135,7 @@ function RegisterPage() {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setLoggedInUser(null);
+    setAsideSrc('');
   };
 
   const handleLinkClick = (e, link) => {
@@ -152,7 +153,9 @@ function RegisterPage() {
   return (
     <div className="register-page">
       <div className="sidebar">
-        <img src={logo} alt="MA:IN 로고" className="logo_main" />
+        <button style= {{border: 'none', cursor: 'pointer'}} onClick={() => setAsideSrc('')}>
+          <img src={logo} alt="MA:IN 로고" className="logo_main" />
+        </button>
         <div className="menu">
           <hr style={{border: '1px solid #e2e2e2'}}/>
           {loggedInUser ? (
@@ -189,7 +192,7 @@ function RegisterPage() {
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <button className="close-button" onClick={closeModal}>←</button>
+            <button className="close-button" onClick={closeModal}><strong style = {{fontSize: '25px'}}>←</strong></button>
             <h2>회원가입</h2>
 
             <form onSubmit={handleSubmit}>
@@ -260,7 +263,7 @@ function RegisterPage() {
               {birthdayValidation && (
                 <span className="error-message">{birthdayValidation}</span>
               )}
-              <button type="submit">확원가입</button>
+              <button type="submit">회원가입</button>
             </form>
           </div>
         </div>
@@ -269,7 +272,7 @@ function RegisterPage() {
       {isLoginModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <button className="close-button" onClick={closeLoginModal}>←</button>
+            <button className="close-button" onClick={closeLoginModal}><strong style = {{fontSize: '25px'}}>←</strong></button>
             <h2>로그인</h2>
 
             <form onSubmit={handleLogin}>

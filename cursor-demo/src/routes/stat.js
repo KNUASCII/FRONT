@@ -3,9 +3,6 @@ import React, { useState, useEffect } from "react";
 import './stats.css';
 import axios from 'axios'; // axios 라이브러리 import
 
-
-
-
 const RegularPentagon = ({ fill = "lightblue", stroke = "black", strokeWidth = 2 }) => {
   const [stats, setStats] = useState({기쁨:0.1, 슬픔:0.1, 분노:0.1, 불안:0.1, 무기력:0.1}); // 초기 상태 0.1로 한 이유 오각형 모양 이상함
 
