@@ -48,12 +48,12 @@ body {
 }
 
 .logo {
-  border-radius: 45px;
-  width: 15vw;                /* 또는 10rem, etc. */
-  height: 15vw;
-  max-width: 200px;
+  width: 150px; /* 원하는 크기로 설정 */
+  height: auto; /* 비율 유지 */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  max-width: 400px;
   min-width: 80px;
-  height: auto;               /* 가로 비율에 맞춰 세로 자동 조정 */
   animation: slideInFromLeft 0.5s ease-out 1.5s forwards;
   opacity: 0;
 }
@@ -114,6 +114,7 @@ body {
   max-width: 1200px; /* 최대 너비 제한 */
   margin: 0 auto; /* 중앙 정렬 */
   padding: 20px; /* 내부 여백 */
+  flex-wrap: nowrap;
 }
 
 .section3 .content {
@@ -135,7 +136,7 @@ body {
 .section3 .text {
   flex: 1;
   margin-right: 0px;
-  width: 530px;
+  width: 350px;
   text-align: left;
 }
 
@@ -147,8 +148,14 @@ body {
   padding: 0; /* 모든 패딩 제거 */
 }
 
+.section3 .img img {
+  width: 250px; /* 이미지 너비를 300px로 설정 */
+  height: auto; /* 비율 유지 */
+}
+
 .section4 {
   background-color: #ffffff;
+  flex-wrap: nowrap;
 }
 
 .section4 .content {
@@ -161,13 +168,18 @@ body {
 .section4 .text {
   flex: 1;
   margin-right: 0px;
-  width: 530px;
+  width: 350px;
   text-align: left;
 }
 
 .section4 .img {
   flex: 1;
   text-align: center;
+}
+
+.section4 .img img {
+  width: 250px; /* 이미지 너비를 300px로 설정 */
+  height: auto; /* 비율 유지 */
 }
 
 .section5 {
@@ -250,4 +262,19 @@ body {
 .img.fade-in-down {
   transform: translateY(-100px); /* 위에서 아래로 나타남 */
   opacity: 1;
+}
+
+.menu-item img {
+  width: 30px; /* 아이콘 크기 조정 */
+  height: auto; /* 비율 유지 */
+  margin-right: 10px;
+}
+
+.sidebar {
+  width: 250px; /* 부모 요소의 크기 조정 */
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
